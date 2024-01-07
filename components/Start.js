@@ -1,11 +1,20 @@
 import { useState } from "react";
-import { StyleSheet, View, Text, Button, TextInput } from "react-native";
+import image from "../image/Background-Image.png";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  TextInput,
+  ImageBackground,
+} from "react-native";
 
 const Start = ({ navigation }) => {
   const [name, setName] = useState("");
 
   return (
     <View style={styles.container}>
+      <ImageBackground source={image} style={styles.image}></ImageBackground>
       <Text>Hello Screen1!</Text>
       <TextInput
         style={styles.textInput}
@@ -30,6 +39,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginTop: 15,
     marginBottom: 15,
+  },
+  image: {
+    justifyContent: "center",
   },
 });
 
