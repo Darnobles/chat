@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
 
 const Chat = ({ route, navigation }) => {
-  const name = route.params;
+  const { name } = route.params;
 
   useEffect(() => {
     navigation.setOptions({ title: name });
