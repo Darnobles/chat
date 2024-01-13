@@ -12,21 +12,8 @@ import {
 
 const Start = ({ navigation }) => {
   const [name, setName] = useState("");
-  const [button1Color, setButton1Color] = useState("#68c481");
-  const [button2Color, setButton2Color] = useState("#ad92de");
-  const [button3Color, setButton3Color] = useState("#7b9fe0");
 
-  const onPressButton1 = () => {
-    setButton1Color("#68c481"); // Change this to the desired color for Button 1
-  };
-
-  const onPressButton2 = () => {
-    setButton2Color("#ad92de"); // Change this to the desired color for Button 2
-  };
-
-  const onPressButton3 = () => {
-    setButton3Color("#7b9fe0"); // Change this to the desired color for Button 3
-  };
+  const [backgroundColor, setBackgroundColor] = useState("");
 
   return (
     <View style={styles.container}>
@@ -38,27 +25,27 @@ const Start = ({ navigation }) => {
         onChangeText={setName}
         placeholder="Type your username here"
       />
-      <TouchableOpacity
-        style={[styles.button1, { backgroundColor: button1Color }]}
-        onPress={onPressButton1}
-      ></TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.button2, { backgroundColor: button2Color }]}
-        onPress={onPressButton2}
-      ></TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.button3, { backgroundColor: button3Color }]}
-        onPress={onPressButton3}
-      ></TouchableOpacity>
+      <View style={styles.colorContainer}>
+        <TouchableOpacity
+          style={[styles.button1, { backgroundColor: "#68c481" }]}
+          onPress={() => setBackgroundColor("#68c481")}
+        ></TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button2, { backgroundColor: "#ad92de" }]}
+          onPress={() => setBackgroundColor("#ad92de")}
+        ></TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button3, { backgroundColor: "#7b9fe0" }]}
+          onPress={() => setBackgroundColor("#7b9fe0")}
+        ></TouchableOpacity>
+      </View>
       <Button
         title="Go to Chat"
         onPress={() =>
           navigation.navigate(
             "Chat",
             { name: name },
-            { button1Color: button1Color },
-            { button2Color: button2Color },
-            { button3Color: button3Color }
+            { backgroundColor: backgroundColor }
           )
         }
       />
@@ -71,6 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 25,
   },
   textInput: {
     width: "88%",
@@ -80,26 +68,37 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   image: {
+    flex: 1,
     justifyContent: "center",
+    width: "100%",
+    height: "100%",
   },
 
   button1: {
     alignItems: "center",
     backgroundColor: "#68c481",
-    width: 50 / 2,
-    brorderRadius: 50,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 15,
   },
   button2: {
     alignItems: "center",
-    backgroundColor: "##FF0000",
-    width: 50 / 2,
-    brorderRadius: 50,
+    backgroundColor: "#FF0000",
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 15,
   },
   button3: {
     alignItems: "center",
     backgroundColor: "#7b9fe0",
-    width: 50 / 2,
-    brorderRadius: 50,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  colorContainer: {
+    flexDirection: "row",
   },
 });
 
