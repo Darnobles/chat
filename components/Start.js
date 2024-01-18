@@ -58,7 +58,7 @@ const Start = ({ navigation }) => {
             ></TouchableOpacity>
           </View>
           <Button
-            style={styles.startButton}
+            style={[styles.startButton, { backgroundColor: "black" }]}
             title="Start Chatting"
             onPress={signInUser}
           />
@@ -80,11 +80,6 @@ const styles = StyleSheet.create({
     padding: 20,
     marginLeft: 20,
     marginRight: 20,
-  },
-
-  //not working
-  startButton: {
-    backgroundColor: "black",
   },
 
   textInput: {

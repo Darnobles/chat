@@ -6,11 +6,11 @@ import {
   addDoc,
   onSnapshot,
   query,
-  where,
+  orderBy,
 } from "firebase/firestore";
 
 const Chat = ({ route, navigation, db }) => {
-  const { name, backgroundColor } = route.params;
+  const { name, backgroundColor, userID } = route.params;
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Chat = ({ route, navigation, db }) => {
       documentsSnapshot.forEach((doc) => {
         newMessage.push({ id: doc.id, ...doc.data() });
       });
-      setLists(newLists);
+      setMessages(newMessage);
     });
 
     // Clean up code
@@ -54,11 +54,12 @@ const Chat = ({ route, navigation, db }) => {
   return (
     <View style={[styles.container, { backgroundColor: backgroundColor }]}>
       <GiftedChat
+        style={styles.giftedChat}
         messages={messages}
         renderBubble={renderBubble}
         onSend={(messages) => onSend(messages)}
         user={{
-          _id: { userID },
+          _id: userID,
           name,
         }}
       />
@@ -75,6 +76,10 @@ const Chat = ({ route, navigation, db }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  giftedChat: {
+    width: "88%",
+    paddingBottom: 10,
   },
 });
 
