@@ -16,6 +16,11 @@ const Chat = ({ route, navigation, db, isConnected }) => {
 
   let unsubMessage;
 
+  const loadCachedMessages = async () => {
+    const cachedMessages = (await AsyncStorage.getItem("messages")) || [];
+    setMessages(JSON.parse(cachedMessages));
+  };
+
   useEffect(() => {
     navigation.setOptions({ title: name });
     if (isConnected === true) {
@@ -32,11 +37,6 @@ const Chat = ({ route, navigation, db, isConnected }) => {
         setMessages(newMessage);
       });
     } else loadCachedMessages();
-
-    const loadCachedMessages = async () => {
-      const cachedMessages = (await AsyncStorage.getItem("messages")) || [];
-      setLists(JSON.parse(cachedMessages));
-    };
 
     // Clean up code
     return () => {
