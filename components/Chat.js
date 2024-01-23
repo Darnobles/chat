@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, View, Platform, KeyboardAvoidingView } from "react-native";
-import { Bubble, GiftedChat } from "react-native-gifted-chat";
+import { Bubble, GiftedChat, InputToolbar } from "react-native-gifted-chat";
 import {
   collection,
   addDoc,
@@ -72,20 +72,24 @@ const Chat = ({ route, navigation, db, isConnected }) => {
     );
   };
 
+  const renderInputToolbar = (props) => {
+    if (isConnected) return <InputToolbar {...props} />;
+    else return null;
+  };
+
   return (
     <View style={[styles.container, { backgroundColor: backgroundColor }]}>
-      {isConnected === true ? (
-        <GiftedChat
-          style={styles.giftedChat}
-          messages={messages}
-          renderBubble={renderBubble}
-          onSend={(messages) => onSend(messages)}
-          user={{
-            _id: userID,
-            name,
-          }}
-        />
-      ) : null}
+      <GiftedChat
+        style={styles.giftedChat}
+        messages={messages}
+        renderBubble={renderBubble}
+        renderInputToolbar={renderInputToolbar}
+        onSend={(messages) => onSend(messages)}
+        user={{
+          _id: userID,
+          name,
+        }}
+      />
       {Platform.OS === "android" ? (
         <KeyboardAvoidingView behavior="height" />
       ) : null}

@@ -8,6 +8,7 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { getAuth, signInAnonymously } from "firebase/auth";
 
