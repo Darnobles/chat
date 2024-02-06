@@ -46,16 +46,16 @@ const Start = ({ navigation }) => {
           />
           <View style={styles.colorContainer}>
             <TouchableOpacity
-              style={[styles.button1, { backgroundColor: "#68c481" }]}
-              onPress={() => setBackgroundColor("#68c481")}
+              style={[styles.button1, { backgroundColor: "#d6c3b4" }]}
+              onPress={() => setBackgroundColor("#d6c3b4")}
             ></TouchableOpacity>
             <TouchableOpacity
-              style={[styles.button2, { backgroundColor: "#ad92de" }]}
-              onPress={() => setBackgroundColor("#ad92de")}
+              style={[styles.button2, { backgroundColor: "#809188" }]}
+              onPress={() => setBackgroundColor("#809188")}
             ></TouchableOpacity>
             <TouchableOpacity
-              style={[styles.button3, { backgroundColor: "#7b9fe0" }]}
-              onPress={() => setBackgroundColor("#7b9fe0")}
+              style={[styles.button3, { backgroundColor: "#425169" }]}
+              onPress={() => setBackgroundColor("#425169")}
             ></TouchableOpacity>
           </View>
           <Button
@@ -98,21 +98,21 @@ const styles = StyleSheet.create({
   },
 
   button1: {
-    backgroundColor: "#68c481",
+    backgroundColor: "#d6c3b4",
     width: 50,
     height: 50,
     borderRadius: 25,
     marginRight: 15,
   },
   button2: {
-    backgroundColor: "#FF0000",
+    backgroundColor: "#809188",
     width: 50,
     height: 50,
     borderRadius: 25,
     marginRight: 15,
   },
   button3: {
-    backgroundColor: "#7b9fe0",
+    backgroundColor: "#425169",
     width: 50,
     height: 50,
     borderRadius: 25,
