@@ -56,7 +56,11 @@ const Chat = ({ route, navigation, db, isConnected, storage }) => {
       unsubMessage = onSnapshot(q, async (documentsSnapshot) => {
         let newMessage = [];
         documentsSnapshot.forEach((doc) => {
-          newMessage.push({ id: doc.id, ...doc.data() });
+          newMessage.push({
+            id: doc.id,
+            ...doc.data(),
+            createdAt: new Date(doc.data().createdAt.toMillis()),
+          });
         });
         cacheMessages(newMessage);
         setMessages(newMessage);
